@@ -12,7 +12,12 @@ def second():
 
 @app.route('/third/subthird')
 def third():
-    retur 'this page third page'
+    return 'this is thr subpage of third'
+
+@app.route('/fourth/<string:id>')
+def fourth(id):
+    return f'Id number of this page is {id}'
+
 
 
 if __name__ == '__main__':
