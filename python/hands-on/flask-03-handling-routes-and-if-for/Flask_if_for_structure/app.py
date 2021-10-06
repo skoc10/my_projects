@@ -9,8 +9,10 @@ def head():
     first = 'this is my first condition experience'
     return render_template('index.html', message = first)
 
-
-
+@app.route('/skoc')
+def mylist():
+    names = ['selman', 'samet', 'alp', 'mehmemt']
+    return render_template('body.html', object = names)
 
 
 
@@ -20,5 +22,5 @@ def head():
 
 
 if __name__ == '__main__':
-    app.run(debug = True)
+    #app.run(debug = True)
     app.run(host='0.0.0.0', port=80)
