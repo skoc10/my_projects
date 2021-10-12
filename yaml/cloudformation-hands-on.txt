@@ -1,0 +1,8 @@
+- tek bir ec2 dan oluşan bir template hazırlama
+- hazırladığımız template den stack yaratma
+- ikinci template hazırlama 
+    - bir ec2 myinstance isimli
+    - bir elastik ip instanceid si myinstance id olacak
+    - ssh sg oluşturma 22 portu açık olacak
+    - server sg oluşturma 80 portu açık olacak 22 portu açık olacak
+- İkinci hazırlanan template ile ilk stack üzerinde update yapma. 

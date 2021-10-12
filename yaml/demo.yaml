@@ -1,0 +1,54 @@
+# This is the comment line
+---
+key: value
+instructor: charlie
+
+---
+# List of strings
+- charlie
+- guile
+- osvaldo
+
+---
+
+# An employee record
+{
+  "instructor": {
+    "name": "charlie",
+    "department": "aws",
+    "job": "cloud engieer",
+    "age": 40
+  }
+}
+---
+
+# Student list
+
+students:
+  - name: hamit
+    age: 33
+  - name: levent
+    age: 25
+  - fatma
+  - serkan
+
+---
+# Another object format
+
+  {name: armando, job: solutions-arct, department: [aws, devops], age: 45}
+---
+# Multiple lines values
+
+script: | #keeps the block
+  echo "hello world"
+  export PROFILE="teacher"
+  echo $PROFILE
+
+pragraph: > # This text will be a sentence
+  this 
+  line 
+  will 
+  be 
+  in 
+  single 
+  line.

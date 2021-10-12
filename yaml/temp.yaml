@@ -1,0 +1,20 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: |
+  This template launches an EC2 with security group
+
+Resources:
+  LinuxEC2:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: ami-02e136e904f3da870
+      InstanceType: t2.micro
+      KeyName: third_key #please use your own key
+      SecurityGroups:
+        - 2nd_sec_grp # Please use youyr own secgrp
+      Tags:
+        - Key: Name
+          Value: linux
+        - Key: Department
+          Value: HR
+
+  
