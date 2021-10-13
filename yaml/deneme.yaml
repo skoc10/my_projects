@@ -9,5 +9,5 @@ Resources:
       
       InstanceType: t2.micro
       
-      KeyName: key
+      KeyName: third_key
       
