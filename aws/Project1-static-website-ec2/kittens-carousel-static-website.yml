@@ -36,7 +36,7 @@ Resources:
             #!/bin/bash
             yum update -y
             yum install httpd -y
-            FOLDER="https://raw.githubusercontent.com/skoc10/my_projects/main/aws/Project-101-kittens-carousel-static-website-ec2/static-web"
+            FOLDER="https://raw.githubusercontent.com/skoc10/my_projects/main/aws/Project1-static-website-ec2/static-web"
             cd /var/www/html
             wget $FOLDER/index.html
             wget $FOLDER/cat0.jpg

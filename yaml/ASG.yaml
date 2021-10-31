@@ -1,0 +1,67 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: |
+  
+Parameters:
+  
+  myIT:
+    Description: Select the instance type
+    Type: String
+    Default: t2.micro
+    AllowedValues:
+      - t2.micro
+  
+  ParameterName:
+    Description: 
+    Type: AWS::EC2::KeyPair::KeyName
+   
+  
+Resources:
+
+  LogicalID:
+    Type: AWS::ElasticLoadBalancingV2::Listener
+    Properties:
+      AlpnPolicy:
+        AlpnPolicy
+      Certificates:
+        Certificates
+      DefaultActions: # Required
+        DefaultActions
+      LoadBalancerArn: "String" # Required
+      Port: Number
+      Protocol: "String"
+      SslPolicy: "String"
+
+
+  myTG:
+    Type: AWS::ElasticLoadBalancingV2::TargetGroup
+    Properties:
+      HealthCheckIntervalSeconds: 10
+      HealthCheckTimeoutSeconds: 5
+      HealthyThresholdCount: 5
+      Port: 80
+      Protocol: HTTP
+      UnhealthyThresholdCount: 3
+      #VpcId: "String"
+
+
+
+  mySG:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: "Enables SSH and HTTP" # Required
+      SecurityGroupIngress:
+        - IpProtocol: tcp 
+          FromPort: 22
+          ToPort: 22
+          CidrIp: 0.0.0.0/0
+
+        - IpProtocol: tcp 
+          FromPort: 80
+          ToPort: 80
+          CidrIp: 0.0.0.0/0
+      VpcId: # to be added
+  
+Outputs:
+
+  AppUrl:
+    Description: url of the ALB
