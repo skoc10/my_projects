@@ -1,0 +1,38 @@
+AWSTemplateFormatVersion: 2010-09-09
+
+Resources:
+  MyEC2Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      AvailabilityZone: us-east-1a
+      
+      ImageId: ami-02e136e904f3da870
+      
+      InstanceType: t2.micro
+      
+      KeyName: third_key
+      
+      SecurityGroups:
+        - 2nd_sec_grp
+      Tags:
+        - Key: Name
+          Value: WebServerofStackName
+     
+      UserData: 
+        !Base64 |
+        #! /bin/bash
+        #update os
+        sudo yum update -y
+        #install git
+        sudo yum install git -y
+        #install apache server
+        sudo yum install -y httpd
+        systemctl start httpd
+        systemctl enable httpd
+        git clone https://github.com/skoc10/my_projects.git 
+        sudo cp /my_projects/aws/Project1-static-website-ec2/static-web/* /var/www/html
+       
+        
+        
+        
+      
