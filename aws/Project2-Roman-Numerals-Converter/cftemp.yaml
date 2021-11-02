@@ -42,8 +42,9 @@ Resources:
             sudo mkdir python
             cd python/
             sudo cp -R /my_projects/aws/Project2-Roman-Numerals-Converter/* .
-            sudo chmod +x cli.sh
-            sudo ./cli.sh
+            sudo python3 app.py
+            #sudo chmod +x cli.sh
+            #sudo ./cli.sh
             
 
 
