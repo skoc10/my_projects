@@ -14,15 +14,16 @@ def convert(decimal_num):
 def index():
     return render_template("index.html", developer_name="Selman Koc")
 
-@app.route('/result', methods=['GET', 'POST'])
+@app.route('/', methods=['GET', 'POST'])
 def result():
     if request.method == 'POST':
-        alphanum = request.form['number']
-        number = int(alphanum)
+        alphanum = request.form.get('number')
 
-        if alphanum.isdecimal() & 0 < number < 4000:
-            return render_template('result.html', number_decimal=alphanum, number_roman=convert(number), developer_name="Selman Koc")
-        
+        if alphanum.isdecimal():
+            if (0 < int(alphanum) < 4000):
+                return render_template('result.html', number_decimal=alphanum, number_roman=convert(int(alphanum)), developer_name="Selman Koc")
+            else:
+                return render_template('index.html', not_valid=True, developer_name="Selman Koc")
         else:
             return render_template('index.html', not_valid=True, developer_name="Selman Koc")
     else:
@@ -30,5 +31,5 @@ def result():
 
 # app.run(host='0.0.0.0', port=80)
 if __name__ == '__main__':
-    app.run(debug=True)
-    #app.run(host='0.0.0.0', port=80)
+    #app.run(debug=True)
+    app.run(host='0.0.0.0', port=80)
