@@ -38,7 +38,7 @@ Resources:
             sudo yum install git -y
             sudo pip3 install flask
             sudo git clone https://github.com/skoc10/my_projects.git 
-            sudo cd /home/ec2-user
+            cd /home/ec2-user
             sudo mkdir python
             cd python/
             sudo cp -R /my_projects/aws/Project2-Roman-Numerals-Converter/* .
