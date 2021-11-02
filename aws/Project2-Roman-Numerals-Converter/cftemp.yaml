@@ -42,7 +42,9 @@ Resources:
             sudo mkdir python
             cd python/
             sudo cp -R /my_projects/aws/Project2-Roman-Numerals-Converter/* .
-            sudo python3 roman_alphabet.py
+            sudo chmod +x cli.sh
+            sudo ./cli.sh
+            
 
 
 Outputs:
