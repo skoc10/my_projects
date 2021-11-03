@@ -10,10 +10,6 @@ def convert(decimal_num):
         decimal_num %= i
     return num_to_roman
 
-@app.route("/")
-def index():
-    return render_template("index.html", developer_name="Selman Koc")
-
 @app.route('/', methods=['GET', 'POST'])
 def result():
     if request.method == 'POST':
