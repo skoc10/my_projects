@@ -1,4 +1,4 @@
-0AWSTemplateFormatVersion: 2010-09-09
+AWSTemplateFormatVersion: 2010-09-09
 
 Description: |
   This temp creates an ASG behind an ALB.  
@@ -87,6 +87,9 @@ Resources:
           yum update -y
           yum install python3 -y
           pip3 install flask
+          pip3 install flask-mysql
+          pip3 install sqlalchemy
+          pip3 install Flask-SQLAlchemy
           cd /home/ec2-user
           wget https://raw.githubusercontent.com/skoc10/my_projects/main/aws/Project3-Phonebook-Application/phonebook-app.py
           mkdir templates
