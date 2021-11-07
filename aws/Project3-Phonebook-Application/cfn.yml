@@ -91,6 +91,7 @@ Resources:
           pip3 install sqlalchemy
           pip3 install Flask-SQLAlchemy
           cd /home/ec2-user
+          touch /home/ec2-user/dbserver.endpoint
           wget https://raw.githubusercontent.com/skoc10/my_projects/main/aws/Project3-Phonebook-Application/phonebook-app.py
           mkdir templates
           cd templates
