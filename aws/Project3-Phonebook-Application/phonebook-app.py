@@ -6,7 +6,7 @@ from flaskext.mysql import MySQL
 app = Flask(__name__)
 
 # This "/home/ec2-user/dbserver.endpoint" file has to be created from cloudformation template and it has RDS endpoint
-db_endpoint = open("/home/ec2-user/dbserver.endpoint", 'r', encoding='UTF-8') 
+db_endpoint = open("home/ec2-user/dbserver.endpoint", 'r', encoding='UTF-8') 
 
 # Configure mysql database
 
@@ -22,11 +22,11 @@ connection = mysql.connect()
 connection.autocommit(True)
 cursor = connection.cursor()
 
-# Write a function named `init_todo_db` create phonebook table within clarusway_phonebook db, if it doesn't exist
+# Write a function named `init_todo_db` create phonebook table within phonebook db, if it doesn't exist
 
 def init_phonebook_db():
     phonebook_table = """
-    CREATE TABLE IF NOT EXISTS clarusway_phonebook.phonebook(
+    CREATE TABLE IF NOT EXISTS phonebook.phonebook(
     id INT NOT NULL AUTO_INCREMENT,
     name VARCHAR(100) NOT NULL,
     number VARCHAR(100) NOT NULL,
