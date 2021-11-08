@@ -91,7 +91,8 @@ Resources:
           pip3 install sqlalchemy
           pip3 install Flask-SQLAlchemy
           cd /home/ec2-user
-          touch /home/ec2-user/dbserver.endpoint
+          RDS=${MyDB.Endpoint.Address}
+          echo "$RDS" > dbserver.endpoint
           wget https://raw.githubusercontent.com/skoc10/my_projects/main/aws/Project3-Phonebook-Application/phonebook-app.py
           mkdir templates
           cd templates
@@ -127,6 +128,8 @@ Resources:
             IpProtocol: tcp
       VpcId: !Ref myVPC
 
+
+
 Outputs:
 
   AppUrl:
@@ -136,8 +139,7 @@ Outputs:
       - - "http://"
         - !GetAtt myALB.DNSName 
 
-  JDBCConnectionString:
-    Description: JDBC connection string for the database
-    Value: !Join ['', ['jdbc:mysql://', !GetAtt [MyDB, Endpoint.Address], ':', !GetAtt [
-          MyDB, Endpoint.Port], /, 'phonebook']]
+  RDSEndPoint:
+    Description: 'The RDS Endpoint of MySQL DB'
+    Value: !GetAtt MyDB.Endpoint.Address
 
