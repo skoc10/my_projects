@@ -115,11 +115,27 @@ Resources:
       Protocol: HTTP
       UnhealthyThresholdCount: 3
       VpcId: !Ref myVPC
+  
+  myALBsg:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: "Enables SSH and HTTP" # Required
+      SecurityGroupIngress:
+        -   CidrIp: 0.0.0.0/0
+            FromPort: 22
+            ToPort: 22
+            IpProtocol: tcp
+
+        -   CidrIp: 0.0.0.0/0
+            FromPort: 80
+            ToPort: 80
+            IpProtocol: tcp
+      VpcId: !Ref myVPC      
 
   mySG:
     Type: AWS::EC2::SecurityGroup
     Properties:
-      GroupDescription: "Enables SSH and HTTP" # Required
+      GroupDescription: "Enables SSH and HTTP to ALB" # Required
       SecurityGroupIngress:
         -   CidrIp: 0.0.0.0/0
             FromPort: 22
