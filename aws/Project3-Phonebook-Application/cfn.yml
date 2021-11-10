@@ -44,7 +44,7 @@ Resources:
     Type: AWS::ElasticLoadBalancingV2::LoadBalancer
     Properties:
       SecurityGroups:
-        - !GetAtt mySG.GroupId 
+        - !GetAtt myALBsg.GroupId 
       Subnets: !Ref mySubnets 
       Type: application
 
@@ -142,7 +142,7 @@ Resources:
             ToPort: 22
             IpProtocol: tcp
 
-        -   CidrIp: 0.0.0.0/0
+        -   SourceSecurityGroupId: !GetAtt myALBsg.GroupId
             FromPort: 80
             ToPort: 80
             IpProtocol: tcp
