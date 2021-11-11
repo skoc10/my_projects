@@ -29,6 +29,9 @@ Resources:
       EngineVersion: 8.0.19
       MasterUsername: 'admin'
       MasterUserPassword: 'selmankoc'
+      DeleteAutomatedBackups: true
+      VPCSecurityGroups:
+        - !GetAtt myDBsg.GroupId
 
   myListener:
     Type: AWS::ElasticLoadBalancingV2::Listener
@@ -116,6 +119,16 @@ Resources:
       UnhealthyThresholdCount: 3
       VpcId: !Ref myVPC
   
+  myDBsg:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Allow connections only from Webserver
+      SecurityGroupIngress:
+      - IpProtocol: tcp
+        FromPort: 3306
+        ToPort: 3306
+        SourceSecurityGroupId: !GetAtt mySG.GroupId
+
   myALBsg:
     Type: AWS::EC2::SecurityGroup
     Properties:
