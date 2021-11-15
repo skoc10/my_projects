@@ -30,7 +30,7 @@ Resources:
         systemctl start httpd
         systemctl enable httpd
         git clone https://github.com/skoc10/my_projects.git 
-        sudo cp /my_projects/aws/Project1-static-website-ec2/static-web/* /var/www/htmlxs
+        sudo cp /my_projects/aws/Project1-static-website-ec2/static-web/* /var/www/html
        
 
         
