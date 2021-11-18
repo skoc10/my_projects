@@ -21,17 +21,22 @@ Parameters:
 Resources:
   MyDB:
     Type: AWS::RDS::DBInstance
+    DeletionPolicy: Delete
     Properties:
       DBName: 'phonebook'
       AllocatedStorage: '20'
+      AllowMajorVersionUpgrade: false
+      AutoMinorVersionUpgrade: true
+      BackupRetentionPeriod: 0
       DBInstanceClass: db.t2.micro
       Engine: MySQL
       EngineVersion: 8.0.19
       MasterUsername: 'admin'
       MasterUserPassword: 'selmankoc'
+      DBSecurityGroups:
+        - !Ref myDBsg
       DeleteAutomatedBackups: true
-      VPCSecurityGroups:
-        - !GetAtt myDBsg.GroupId
+      Port: 3306
 
   myListener:
     Type: AWS::ElasticLoadBalancingV2::Listener
@@ -80,7 +85,7 @@ Resources:
     Type: AWS::EC2::LaunchTemplate
     Properties:
       LaunchTemplateData:
-        ImageId: ami-01cc34ab2709337aa
+        ImageId: ami-04ad2567c9e3d7893
         InstanceType: t2.micro
         KeyName: !Ref myKP
         SecurityGroupIds:
@@ -120,14 +125,12 @@ Resources:
       VpcId: !Ref myVPC
   
   myDBsg:
-    Type: AWS::EC2::SecurityGroup
+    Type: AWS::RDS::DBSecurityGroup
     Properties:
-      GroupDescription: Allow connections only from Webserver
-      SecurityGroupIngress:
-      - IpProtocol: tcp
-        FromPort: 3306
-        ToPort: 3306
-        SourceSecurityGroupId: !GetAtt mySG.GroupId
+      GroupDescription: access to RDS
+      DBSecurityGroupIngress:
+        - CIDRIP: 0.0.0.0/0
+        - EC2SecurityGroupId: !GetAtt mySG.GroupId
 
   myALBsg:
     Type: AWS::EC2::SecurityGroup
