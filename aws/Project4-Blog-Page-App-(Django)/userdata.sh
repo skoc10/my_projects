@@ -3,13 +3,14 @@ apt-get update -y
 apt-get install git -y
 apt-get install python3 -y
 cd /home/ubuntu/
-TOKEN=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-git clone https://$TOKEN@<YOUR GITHUB REPO URL>
-cd /home/ubuntu/<YOUR GITHUB REPO NAME>
+#TOKEN=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+#git clone https://$TOKEN@<YOUR GITHUB REPO URL>
+git clone https://github.com/skoc10/my_projects.git
+cd /home/ubuntu/my_projects/aws/Project4-Blog-Page-App-(Django)
 apt install python3-pip -y
 apt-get install python3.7-dev libmysqlclient-dev -y
 pip3 install -r requirements.txt
-cd /home/ubuntu/<YOUR GITHUB REPO NAME>/src
+cd /home/ubuntu/my_projects/aws/Project4-Blog-Page-App-(Django)/src
 python3 manage.py collectstatic --noinput
 python3 manage.py makemigrations
 python3 manage.py migrate
