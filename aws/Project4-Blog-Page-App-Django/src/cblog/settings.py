@@ -87,8 +87,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'skocdb', # database name in RDS is written here
         'USER': 'admin', # database master username in RDS is written here
-        #'PASSWORD': config('PASSWORD'),
-        'PASSWORD': 'selmankoc',
+        'PASSWORD': config('PASSWORD'),
         'HOST': 'testdb.c7mnqunej0lj.us-east-1.rds.amazonaws.com',  # database endpoint is written here
         'PORT': '3306', # database port is written here
     }
