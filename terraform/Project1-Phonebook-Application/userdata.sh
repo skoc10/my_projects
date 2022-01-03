@@ -7,8 +7,8 @@ pip3 install flask-mysql
 pip3 install sqlalchemy
 pip3 install Flask-SQLAlchemy
 cd /home/ec2-user
-#echo "${RDSend}" > dbserver.endpoint
-#chmod 777 dbserver.endpoint
+echo "${rds_endpoint}" > dbserver.endpoint
+chmod 777 dbserver.endpoint
 wget https://raw.githubusercontent.com/skoc10/my_projects/main/aws/Project3-Phonebook-Application/phonebook-app.py
 mkdir templates
 cd templates

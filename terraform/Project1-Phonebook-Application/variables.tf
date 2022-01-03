@@ -3,12 +3,18 @@ variable "aws_region" {
   default     = "us-east-1"
 }
 
+variable "db_user_name" {
+  default = "admin"
+}
+variable "db_name" {
+  default = "phonebook"
+}
+variable "db_password" {
+  default = "selmankoc"
+}
 # Amazon Linux 2 AMI (HVM) - Kernel 5.10
 variable "aws_ami" {
-  default = {
-    "us-east-1" = "ami-0ed9277fb7eb570c9"
-
-  }
+  default = "ami-0ed9277fb7eb570c9"
 }
 
 variable "availability_zones" {
