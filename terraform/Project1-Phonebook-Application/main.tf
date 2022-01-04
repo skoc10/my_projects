@@ -236,7 +236,9 @@ resource "aws_autoscaling_group" "web_asg" {
   launch_configuration = aws_launch_configuration.web_lt.name
   load_balancers       = [aws_lb.web_alb.id]
 
-
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 
 data "template_file" "init" {
