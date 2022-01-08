@@ -158,6 +158,7 @@ resource "aws_db_subnet_group" "default" {
 
 resource "aws_lb" "web_alb" {
   name               = "terraform-web-alb"
+  ip_address_type    = "ipv4"
   internal           = false
   load_balancer_type = "application"
   security_groups    = [aws_security_group.alb_sg.id]
@@ -188,13 +189,14 @@ resource "aws_lb_target_group" "tg" {
   port     = 80
   protocol = "HTTP"
   vpc_id   = aws_vpc.web_vpc.id
+  target_type = "instance"
   lifecycle {
     ignore_changes        = [name]
     create_before_destroy = true
   }
   health_check {
     healthy_threshold   = 2
-    unhealthy_threshold = 2
+    unhealthy_threshold = 3
     timeout             = 3
     interval            = 30
   }
@@ -234,7 +236,7 @@ resource "aws_autoscaling_group" "web_asg" {
   health_check_grace_period = 300
   health_check_type         = "ELB"
   force_delete         = true
-  launch_configuration = aws_launch_configuration.web_lt.name
+  launch_configuration = aws_launch_configuration.web_lt.id
   #load_balancers       = [aws_lb.web_alb.id]
 
   /* lifecycle {
@@ -255,7 +257,7 @@ data "template_file" "init" {
   template = "${file("userdata.sh")}"
 
   vars = {
-    rds_endpoint = "${aws_db_instance.db.endpoint}"
+    rds_endpoint = "${aws_db_instance.db.address}"
   }
 }
 resource "aws_launch_configuration" "web_lt" {
@@ -276,5 +278,5 @@ output "elb_dns_name" {
 }
 
 output "rds_endpoint" {
-  value = "${aws_db_instance.db.endpoint}"
+  value = "${aws_db_instance.db.address}"
 }
