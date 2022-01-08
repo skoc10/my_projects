@@ -4,6 +4,6 @@ yum install python3 -y
 pip3 install flask
 pip3 install flask_mysql
 yum install git -y
-TOKEN="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"
+TOKEN="**********************"
 cd /home/ec2-user && git clone https://$TOKEN@github.com/skoc10/phonebook.git
 python3 /home/ec2-user/phonebook/phonebook-app.py
