@@ -1,35 +1,28 @@
-version: '3'
+version: '3.7'
 services: 
   myflaskweb:
-    build: .
+    image: skoc10/proje1
     restart: always
+    depends_on:
+      - database
     ports:
       - "80:80"
-    volumes:
-      - flask_vol:/app
     networks:
       - wpnw
 
-  db:
+  database:
     image: mysql:5.7
     restart: always
-    ports:
-      - "3306:3306"
+    #ports:
+     # - "3306:3306"
     environment:
-      MYSQL_ROOT_PASSWORD: selmankoc
+      MYSQL_ROOT_PASSWORD: R1234r
       MYSQL_DATABASE: database
       MYSQL_USER: admin
       MYSQL_PASSWORD: selmankoc
-
-
-    volumes:
-      - db:/var/lib/mysql
     networks:
       - wpnw
 
-volumes:
-  db:
-  flask_vol:
-
 networks:
   wpnw:
+    driver: bridge
