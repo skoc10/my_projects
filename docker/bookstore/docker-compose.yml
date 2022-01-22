@@ -6,9 +6,9 @@ services:
     container_name: database
     environment:
       MYSQL_ROOT_PASSWORD: P123456p
-      MYSQL_USER: skoc 
-      MYSQL_PASSWORD: selmankoc
-      MYSQL_DATBASE: bookstore_db
+      MYSQL_USER: skoc
+      MYSQL_PASSWORD: Selman_10
+      MYSQL_DATABASE: bookstore_db
     networks:
       - webnet
 
