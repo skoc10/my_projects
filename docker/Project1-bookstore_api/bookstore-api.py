@@ -7,9 +7,9 @@ app = Flask(__name__)
 
 # Configure sqlite database
 app.config['MYSQL_DATABASE_HOST'] = 'database'
-app.config['MYSQL_DATABASE_USER'] = 'admin'
-app.config['MYSQL_DATABASE_PASSWORD'] = 'selmankoc'
-app.config['MYSQL_DATABASE_DB'] = 'database'
+app.config['MYSQL_DATABASE_USER'] = 'skoc'
+app.config['MYSQL_DATABASE_PASSWORD'] = 'Selman_10'
+app.config['MYSQL_DATABASE_DB'] = 'bookstore_db'
 app.config['MYSQL_DATABASE_PORT'] = 3306
 mysql = MySQL()
 mysql.init_app(app)

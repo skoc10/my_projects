@@ -1,0 +1,27 @@
+version: '3.7'
+
+services:
+  database:
+    image: mysql:5.7
+    container_name: database
+    environment:
+      MYSQL_ROOT_PASSWORD: P123456p
+      MYSQL_USER: skoc
+      MYSQL_PASSWORD: Selman_10
+      MYSQL_DATABASE: bookstore_db
+    networks:
+      - webnet
+
+  myapp:
+    image: skoc10/bookstore:latest
+    container_name: myapp
+    restart: always
+    depends_on:
+      - database
+    ports:
+      - "80:80"
+    networks:
+      - webnet
+
+networks:
+  webnet:
