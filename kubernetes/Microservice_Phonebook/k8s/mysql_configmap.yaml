@@ -1,0 +1,9 @@
+piVersion: v1 
+kind: ConfigMap
+metadata:
+  name: mysql-configmap
+  labels:
+    app: mysql-deploy
+data:
+  database: phonebook
+  user: c2tvYw==

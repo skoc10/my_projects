@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: result
+  name: result
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: result
+  template:
+    metadata:
+      labels:
+        app: result
+    spec:
+      containers:
+      - image: skoc10/webresult
+        name: result
+        ports:
+        - containerPort: 80
+        env:
+        - name: MYSQL_USER
+          value: "skoc"
+        - name: MYSQL_PASSWORD
+          value: "R1234r"
+        - name: MYSQL_DATABASE
+          value: "phonebook"
+        - name: MYSQL_DATABASE_HOST
+          value: "mysql-service.default.svc.cluster.local"
