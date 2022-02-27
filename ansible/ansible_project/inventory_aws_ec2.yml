@@ -1,16 +1,16 @@
 [servers]
-react ansible_host=54.86.178.83 ansible_user=ec2-user
-nodejs ansible_host=18.212.39.219 ansible_user=ec2-user
-postgresql ansible_host=44.202.33.138 ansible_user=ec2-user
+react ansible_host=54.163.102.220 ansible_user=ec2-user
+nodejs ansible_host=54.152.31.16 ansible_user=ec2-user
+postgresql ansible_host=18.208.184.136 ansible_user=ec2-user
 
 [react]
-react ansible_host=54.86.178.83 ansible_user=ec2-user
+react ansible_host=54.163.102.220 ansible_user=ec2-user
 
 [nodejs]
-nodejs ansible_host=18.212.39.219 ansible_user=ec2-user
+nodejs ansible_host=54.152.31.16 ansible_user=ec2-user
 
 [postgresql]
-postgresql ansible_host=44.202.33.138 ansible_user=ec2-user
+postgresql ansible_host=18.208.184.136 ansible_user=ec2-user
 
 [all:vars]
 ansible_ssh_private_key_file=/Users/koc/Desktop/git_hub/my_projects/ansible/ansible_project/key.pem
