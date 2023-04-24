@@ -5,8 +5,8 @@ from github import Github
 def update_latest_versions():
     version = os.environ["GITHUB_REF"].split("/")[-1]
     
-    # Preview sürümlerini kontrol et ve sadece preview sürümleri için güncelleme yap
-    if "preview" not in version:
+    # "rc" sürümlerini kontrol et ve sadece "rc" sürümleri için güncelleme yap
+    if "rc" not in version:
         return False
     
     with open("latest-versions.json", "r") as f:
