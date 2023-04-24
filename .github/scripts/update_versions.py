@@ -18,7 +18,6 @@ def update_latest_versions():
 
     return True
 
-
 def create_pr():
     g = Github(os.environ["GITHUB_TOKEN"])
     repo = g.get_repo("skoc10/my_projects")
@@ -27,8 +26,18 @@ def create_pr():
     base = repo.get_branch("main")
     repo.create_git_ref(ref=f"refs/heads/{branch_name}", sha=base.commit.sha)
 
-    repo.update_file("latest-versions.json", "Update latest-versions.json", open("latest-versions.json", "r").read(),
-                     base.commit.commit.tree.sha, branch=branch_name)
+    # Get the current latest-versions.json file and its sha
+    contents = repo.get_contents("latest-versions.json", ref="main")
+    file_sha = contents.sha
+
+    # Update the file in the repo
+    repo.update_file(
+        path="latest-versions.json",
+        message=f"Update latest-versions.json to version {os.environ['GITHUB_REF'].split('/')[-1]}",
+        content=open("latest-versions.json", "r").read().encode("utf-8"),
+        sha=file_sha,
+        branch=branch_name,
+    )
 
     pr = repo.create_pull(title="Update latest-versions.json",
                           body="Automated PR to update the latest-versions.json file.",
@@ -40,4 +49,3 @@ if __name__ == "__main__":
     should_create_pr = update_latest_versions()
     if should_create_pr:
         create_pr()
-
