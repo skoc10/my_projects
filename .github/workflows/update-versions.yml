@@ -3,7 +3,7 @@ name: Update Latest Versions
 on:
   release:
     types:
-      - main
+      - published
 
 jobs:
   update-versions:
