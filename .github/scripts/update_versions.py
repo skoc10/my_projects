@@ -4,19 +4,18 @@ from github import Github
 
 def update_latest_versions():
     version = os.environ["GITHUB_REF"].split("/")[-1]
-    
-    # "rc" sürümlerini kontrol et ve sadece "rc" sürümleri için güncelleme yap
+
     if "rc" not in version:
         return False
-    
+
     with open("latest-versions.json", "r") as f:
         latest_versions = json.load(f)
 
-    latest_versions["version"] = version
+    latest_versions[0]["version"] = version
 
     with open("latest-versions.json", "w") as f:
         json.dump(latest_versions, f, indent=2)
-    
+
     return True
 
 
