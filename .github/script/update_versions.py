@@ -35,7 +35,7 @@ def create_pr():
                           body="Automated PR to update the latest-versions.json file.",
                           head=branch_name, base="main")
 
-    pr.create_review_request(reviewers=["ebicoglu", "gizemmutukurt", "skoc10"])
+    pr.create_review_request(reviewers=["skoc10"])
 
 if __name__ == "__main__":
     should_create_pr = update_latest_versions()
