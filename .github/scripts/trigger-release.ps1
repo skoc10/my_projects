@@ -1,21 +1,14 @@
-
-# GitHub credentials and repository info
-$user = "skoc10"
-$repo = "https://github.com/skoc10/my_projects"
-$workflow_file_name = "publish-release.yml"
-$token = "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"
-
-# # Workflow inputs
-# $tag_name = "v1.0.0"
-# $prerelease = "false"
-# $branchName = "main"
-
 param(
   [string]$tag_name,
   [string]$prerelease,
   [string]$branchName
-) 
+)
 
+# GitHub credentials and repository info
+$user = "skoc10"
+$repo = "my_projects"
+$workflow_file_name = "publish-release.yml"
+$token = "" # PLEASE CHANGE THIS TOKEN IMMEDIATELY
 
 # Create a header for the API request
 $headers = @{
