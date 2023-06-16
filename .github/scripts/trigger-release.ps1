@@ -8,7 +8,7 @@ param(
 $user = "skoc10"
 $repo = "my_projects"
 $workflow_file_name = "publish-release.yml"
-$token = "" # PLEASE CHANGE THIS TOKEN IMMEDIATELY
+$token = $env:GH_PAT
 
 # Create a header for the API request
 $headers = @{
