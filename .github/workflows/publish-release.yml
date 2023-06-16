@@ -29,7 +29,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GH_PAT }}
         with:
           tag_name: ${{ github.event.inputs.tag_name }}
-          release_name: Release ${{ github.event.inputs.tag_name }}
+          release_name: ${{ github.event.inputs.tag_name }}
           draft: false
           prerelease: ${{ github.event.inputs.prerelease }}
 
